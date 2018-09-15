@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+import "dto/User.proto";
+import "dto/Common.proto";
+// [START java_declaration] protoc编译后生成的java包结构名以及外部调用类名
+option java_package = "com.grpctest.service";
+option java_multiple_files = true;
+option java_outer_classname = "UserGrpcService";
+
+package com.grpc.proto;
+
+service GetUserService{
+
+    rpc getUserById (UserIdDTO) returns (UserDTO){}
+
+    rpc getUserStringById (UserIdDTO) returns (StringDTO){}
+}

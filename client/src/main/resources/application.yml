@@ -1,0 +1,63 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: grpc-test-client
+  datasource:
+    connection-timeout: 1000      #连接超时时间
+    max-idle: 10
+    min-idle: 10
+    validation-timeout: 1000      #连接校验超时时间
+    maximum-pool-size: 10       #连接池最大连接数
+  jmx:
+    default-domain: test1
+
+server:
+  port: 6790
+grpc:
+  server:
+    port: 7790
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+ #默认只有info和health端点暴露，* 表示公开所有端点
+
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?user=root&password=&useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&useSSL=false
+    username: root
+    password: backpack1992
+  redis:
+    cluster:
+      node: 127.0.0.1:6380q   #目前定义为单机版
+    password:
+    host: 127.0.0.1
+    port: 6380
+    timeout: 1000
+    jedis:
+      pool:
+        max-idle: 10
+        max-total: 10
+        min-idle: 0
+        max-wait: 1000
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9876/eureka/
+  #  register-with-eureka: true
+  #  fetch-registry: true
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+    prefer-ip-address: true
+
+#  register-with-eureka: false
+#  fetch-registry: false
+
+

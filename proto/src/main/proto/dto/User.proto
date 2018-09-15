@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "proto.dto";
+option java_outer_classname = "Test1ModelDescriptor";
+
+package com.grpc.proto;
+
+message UserIdDTO{
+    int32 userId = 1;
+}
+
+message UserDTO{
+    int32 userId = 1;
+    int32 age = 2;
+    string username = 3;
+    string area = 4;
+}

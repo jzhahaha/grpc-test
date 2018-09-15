@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "proto.dto";
+option java_outer_classname = "CommonModelDescriptor";
+
+package com.grpc.proto;
+
+message StringDTO{
+    string content = 1;
+}
+
+message IntegerDTO{
+    int32 integer = 1;
+}
+
+message LongDTO{
+    int64 long = 1;
+}
+
+message BooleanDTO{
+    bool boolean = 1;
+}
+
+message StringListDTO{
+    repeated string lst = 1;
+}
+
+message LongListDTO {
+    repeated int64 lst = 1;
+}
+
+message IntegerListDTO {
+    repeated int32 lst = 1;
+}
